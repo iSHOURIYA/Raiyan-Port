@@ -6,7 +6,7 @@ export const Scene1Origin = ({ position }: { position: [number, number, number] 
   return (
     <group position={position}>
       <Sparkles count={400} scale={15} size={2} speed={0.4} opacity={0.5} position={[0, 0, -5]} color="#00F0FF" />
-      
+
       <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
         <Text
           fontSize={0.8}
@@ -24,15 +24,15 @@ export const Scene1Origin = ({ position }: { position: [number, number, number] 
       <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.3}>
         <Text
           fontSize={0.25}
-          color="#9CA3AF"
-          maxWidth={4}
+          color="#e5e1e4"
+          maxWidth={6}
           textAlign="center"
           anchorX="center"
           anchorY="middle"
-          position={[0, -0.5, 0]}
+          position={[0, -0.6, 0]}
         >
           Engineer | Problem Solver | Event Coordinator
-          <meshStandardMaterial color="#9CA3AF" roughness={0.5} />
+          <meshStandardMaterial color="#e5e1e4" emissive="#e5e1e4" emissiveIntensity={0.4} roughness={0.5} />
         </Text>
       </Float>
 
