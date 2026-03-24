@@ -1,6 +1,7 @@
 import { Text, Float, RoundedBox } from "@react-three/drei";
 
 export const Scene2Profile = ({ position }: { position: [number, number, number] }) => {
+  const intro = "Driven developer blending technical depth with execution-first leadership across software and events.";
   const points = [
     "Strong problem-solving mindset",
     "Event coordination & logistics",
@@ -13,7 +14,19 @@ export const Scene2Profile = ({ position }: { position: [number, number, number]
       <Text position={[0, 5, -2]} fontSize={1.5} color="#00F0FF" anchorX="center" anchorY="middle" letterSpacing={0.1}>
         IDENTITY
       </Text>
-      
+
+      <Text
+        position={[0, 3.95, -1.6]}
+        fontSize={0.28}
+        color="#cbd5e1"
+        anchorX="center"
+        anchorY="middle"
+        maxWidth={11}
+        textAlign="center"
+      >
+        {intro}
+      </Text>
+
       {points.map((point, i) => {
         const xOffset = i % 2 === 0 ? -3 : 3;
         const yOffset = 2 - i * 1.5;

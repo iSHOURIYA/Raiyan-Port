@@ -15,6 +15,9 @@ import { Scene7Education } from "./scenes/Scene7_Education";
 import { Scene8Outro } from "./scenes/Scene8_Outro";
 
 const SCENE_DEPTH = 30; // Distance between scenes
+const TOTAL_SCENES = 8;
+const OUTRO_CAMERA_PADDING = 6;
+const MAX_SCROLL_DEPTH = (TOTAL_SCENES - 1) * SCENE_DEPTH - OUTRO_CAMERA_PADDING;
 
 function CameraOrchestrator() {
   const scroll = useScroll();
@@ -22,11 +25,10 @@ function CameraOrchestrator() {
 
   useFrame((state, delta) => {
     if (!cameraGroup.current) return;
+    const isNearOutro = scroll.offset > 0.9;
     
-    // Total scroll mapped to Z-depth (going negative into the screen)
-    // 8 scenes * SCENE_DEPTH -> total depth ~ 240
-    // We dampen to make it feel smooth like a cinematic camera
-    const targetZ = -(scroll.offset * (8 * SCENE_DEPTH));
+    // Map scroll to the last scene only to avoid extra travel beyond the outro.
+    const targetZ = -(scroll.offset * MAX_SCROLL_DEPTH);
     
     // Smooth damp the camera's Z position
     cameraGroup.current.position.z = THREE.MathUtils.damp(
@@ -37,15 +39,17 @@ function CameraOrchestrator() {
     );
     
     // Add a slight look-around based on mouse position
-    const targetX = (state.pointer.x * 2);
-    const targetY = (state.pointer.y * 2);
+    const parallaxAmount = isNearOutro ? 0.6 : 2;
+    const targetX = state.pointer.x * parallaxAmount;
+    const targetY = state.pointer.y * parallaxAmount;
     
     cameraGroup.current.position.x = THREE.MathUtils.damp(cameraGroup.current.position.x, targetX, 2, delta);
     cameraGroup.current.position.y = THREE.MathUtils.damp(cameraGroup.current.position.y, targetY, 2, delta);
     
     // Slight banking/rotation based on mouse interaction for cinematic feel
-    cameraGroup.current.rotation.y = THREE.MathUtils.damp(cameraGroup.current.rotation.y, -state.pointer.x * 0.1, 2, delta);
-    cameraGroup.current.rotation.x = THREE.MathUtils.damp(cameraGroup.current.rotation.x, state.pointer.y * 0.1, 2, delta);
+    const rotationAmount = isNearOutro ? 0.03 : 0.1;
+    cameraGroup.current.rotation.y = THREE.MathUtils.damp(cameraGroup.current.rotation.y, -state.pointer.x * rotationAmount, 2, delta);
+    cameraGroup.current.rotation.x = THREE.MathUtils.damp(cameraGroup.current.rotation.x, state.pointer.y * rotationAmount, 2, delta);
   });
 
   return (
@@ -62,8 +66,8 @@ export default function ExperienceJourney() {
       <ambientLight intensity={0.5} color="#131315" />
       <directionalLight position={[10, 10, 5]} intensity={1} color="#B500FF" />
       
-      {/* 9 pages gives enough scroll room for 8 scenes + ending buffer */}
-      <ScrollControls pages={10} damping={0.2}>
+      {/* One scroll page per scene, ending exactly at Scene 8 (Outro). */}
+      <ScrollControls pages={TOTAL_SCENES} damping={0.2}>
         <CameraOrchestrator />
         
         {/* Continuous 3D World */}
