@@ -3,7 +3,32 @@ import { useMemo } from "react";
 import * as THREE from "three";
 
 export const Scene3Skills = ({ position }: { position: [number, number, number] }) => {
-  const techSkills = ["Python", "Java", "C++", "HTML/CSS", "JavaScript", "React", "Next.js", "MySQL", "MongoDB", "AWS Basics", "Cisco Packet Tracer"];
+  const techSkills = [
+    "Python",
+    "NumPy",
+    "Pandas",
+    "scikit-learn",
+    "TensorFlow",
+    "Machine Learning",
+    "Deep Learning",
+    "NLP Basics",
+    "Java",
+    "C++",
+    "TypeScript",
+    "JavaScript",
+    "HTML/CSS",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Express.js",
+    "REST APIs",
+    "MySQL",
+    "MongoDB",
+    "Git/GitHub",
+    "Docker",
+    "AWS Basics",
+    "Cisco Packet Tracer",
+  ];
   const eventSkills = ["Team Coordination", "Vendor Liaison", "Logistics Management", "Public Speaking", "Adaptability"];
   const langSkills = ["English (Fluent)", "Hindi", "Urdu"];
   
