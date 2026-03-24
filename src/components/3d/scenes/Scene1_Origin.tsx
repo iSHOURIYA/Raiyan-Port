@@ -9,25 +9,27 @@ export const Scene1Origin = ({ position }: { position: [number, number, number] 
       
       <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
         <Text
-          fontSize={2.5}
-          letterSpacing={-0.05}
+          fontSize={0.8}
+          letterSpacing={0.05}
           color="#ffffff"
           anchorX="center"
           anchorY="middle"
-          position={[0, 1, 0]}
+          position={[0, 0.5, 0]}
         >
           Raiyan Ali
-          <meshStandardMaterial color="#ffffff" emissive="#00F0FF" emissiveIntensity={0.5} roughness={0.2} metalness={0.8} />
+          <meshStandardMaterial color="#ffffff" emissive="#00F0FF" emissiveIntensity={0.3} roughness={0.2} metalness={0.8} />
         </Text>
       </Float>
 
       <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.3}>
         <Text
-          fontSize={0.5}
+          fontSize={0.25}
           color="#9CA3AF"
+          maxWidth={4}
+          textAlign="center"
           anchorX="center"
           anchorY="middle"
-          position={[0, -1, 0]}
+          position={[0, -0.5, 0]}
         >
           Engineer | Problem Solver | Event Coordinator
           <meshStandardMaterial color="#9CA3AF" roughness={0.5} />

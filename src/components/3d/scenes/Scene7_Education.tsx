@@ -18,17 +18,14 @@ export const Scene7Education = ({ position }: { position: [number, number, numbe
       {/* Main Education Panel */}
       <Float speed={1.5} floatIntensity={0.5} position={[-4, 2, 0]}>
         <group>
-          <RoundedBox args={[8, 3.5, 0.2]} radius={0.2} smoothness={4} position={[0, 0, -0.2]}>
+          <RoundedBox args={[8, 3, 0.2]} radius={0.2} smoothness={4} position={[0, 0, -0.2]}>
             <meshStandardMaterial color="#1c1b1e" opacity={0.6} transparent />
           </RoundedBox>
-          <Text position={[0, 1, 0]} fontSize={0.45} color="#ffffff" anchorX="center">
+          <Text position={[0, 0.5, 0]} fontSize={0.45} color="#ffffff" anchorX="center">
             B.Tech, Computer Science
           </Text>
-          <Text position={[0, 0, 0]} fontSize={0.35} color="#B500FF" anchorX="center">
+          <Text position={[0, -0.5, 0]} fontSize={0.35} color="#B500FF" anchorX="center">
             Lovely Professional University
-          </Text>
-          <Text position={[0, -1, 0]} fontSize={0.35} color="#9CA3AF" anchorX="center">
-            CGPA: 7.42/10
           </Text>
         </group>
       </Float>
