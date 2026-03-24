@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #00F0FF;
+  --color-primary-container: #006970;
+  --color-secondary: #B500FF;
+  --color-secondary-container: #fffbff;
+  --color-background: #131315;
+  --color-surface: #131315;
+  --color-surface-dim: #131315;
+  --color-surface-container-lowest: #0e0e10;
+  --color-surface-container-low: #1c1b1e;
+  --color-surface-container: #201f22;
+  --color-surface-container-high: #2a2a2c;
+  --color-surface-container-highest: #353437;
+  --color-on-surface: #e5e1e4;
+  --color-outline-variant: #3b494b;
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-space-grotesk);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@utility glass {
+  background-color: color-mix(in srgb, var(--color-surface-container) 40%, transparent);
+  backdrop-filter: blur(20px);
+  border: 1px solid color-mix(in srgb, var(--color-outline-variant) 15%, transparent);
+}
+
+@utility glass-panel {
+  background-color: var(--color-surface-container-low);
+  border: 1px solid color-mix(in srgb, var(--color-outline-variant) 10%, transparent);
+  box-shadow: inset 1px 1px 0px 0px color-mix(in srgb, var(--color-primary) 20%, transparent),
+              0px 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+@utility text-glow {
+  text-shadow: 0 0 10px color-mix(in srgb, var(--color-primary) 50%, transparent), 
+               0 0 20px color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
