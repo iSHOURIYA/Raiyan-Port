@@ -46,6 +46,18 @@ export const Scene7Education = ({ position }: { position: [number, number, numbe
           </group>
         </Float>
       ))}
+
+      {/* Drive Link Button */}
+      <Float speed={2} floatIntensity={0.8} position={[4, -4.5, 0]}>
+        <group onClick={() => window.open('https://drive.google.com/drive/folders/1VcJrCGSZOCfRWTt0q_4nrZYKDB732rsk')}>
+          <RoundedBox args={[7, 1.2, 0.1]} radius={0.1} smoothness={4} position={[0, 0, -0.1]}>
+            <meshStandardMaterial color="#00F0FF" emissive="#00F0FF" emissiveIntensity={0.2} metalness={0.8} />
+          </RoundedBox>
+          <Text position={[0, 0, 0]} fontSize={0.35} color="#131315" anchorX="center" anchorY="middle">
+            View Credentials in Drive
+          </Text>
+        </group>
+      </Float>
     </group>
   );
 };
